@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Shannon+Std&display=swap" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
+    <title>Los Pollos Hermanos - Madrid</title>
+</head>
+<body>
+  <div class="main">
+    <div class="background"></div>
+
+    <div class="headerbar-parent">
+      <div class="headerbar"></div>
+    </div>
+    
+    <div class="footerbar-parent">
+      <div class="footerbar-azul"></div>
+      <span class="texto-freerange">FREE-RANGE CHICKENS. THEY WILL MAKE YOU ORDER MORE!</span>
+      <div class="elemento-1"></div>
+      <div class="elemento-2"></div>
+    </div>
+    
+    <div class="col-left">
+      <div class="col-1-textos">
+        <span class="texto-abrimos">ABRIMOS NUEVO RESTAURANTE EN</span>
+        <span class="texto-alcala">PUERTA DE ALCALÁ</span>
+        <div class="imagen-madrid"></div>
+      </div>
+      <div class="logo-parent">
+        <div class="logo-circulo"></div>
+        <div class="logo-circulo-imagen"></div>
+      </div>
+    </div>
+    
+    <div class="col-right">
+
+      <div id="timer"></div>
+      
+      <div class="imagen-gus"></div>
+      <div class="modulo-newsletter">
+        <div class="back-newsletter"></div>
+        <span class="titulo-newsletter">Subscribe to the newsletter</span>
+        <span class="sub-newsletter">and get promotional drinks!</span>
+        <span class="quote-gus">Gus Fring — Owner and Proprietor</span>
+        <div class="boton-newsletter">
+          <button class="boton-input" onclick="sendEmail()">SUBSCRIBE NOW</button>
+        </div>
+        <div class="campo-email">
+          <input type="text" class="texto-email" placeholder="Your email here" id="inputemail">
+          <div class="email-reply" id="messageemail">
+            Thank you for your signing up
+          </div>
+        </div>
+      </div>
+      <span class="texto-oferta">* Valid offer during a couple of weeks when ordering food at the restaurant</span>
+      <div class="bar-pollo-1"></div>
+      <div class="bar-pollo-2"></div>
+    </div>
+  </div>
+
+  <script>
+    
+    function sendEmail() {
+      
+      // Hide input
+      document.getElementById("inputemail").style.display = "none"
+
+      // Show message
+      document.getElementById("messageemail").style.display = "block"
+    }
+
+    function updateTimer() {
+
+      const future = Date.parse("jun 3, 2022 15:00:00")
+
+      const now = new Date() // Current moment on load
+
+      const diff = future - now
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+      const hours = Math.floor(diff / (1000 * 60 * 60))
+      const mins = Math.floor(diff / (1000 * 60))
+      const secs = Math.floor(diff / 1000)
+      
+      const d = days
+      const h = hours - days * 24
+      const m = mins - hours * 60
+      const s = secs - mins * 60
+
+      document.getElementById("timer").innerHTML =
+
+        '<div class="">' + d + '<span>Days</span></div>' +
+        '<div class="">' + h + '<span>Hours</span></div>' +
+        '<div class="">' + m + '<span>Minutes</span></div>' +
+        '<div class="">' + s + '<span>Seconds</span></div>'
+    }
+
+    setInterval('updateTimer()', 1000);
+
+  </script>
+</body>
+</html>
